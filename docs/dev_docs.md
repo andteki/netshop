@@ -2,7 +2,7 @@
 
 ## Adatbázis
 
-products(id, name, price, unit)
+products(id, name, price, unit, images)
 images(id, name, productId)
 
 ## Végpontok
