@@ -5,46 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Image;
-use Validator;
 
 class ImageController extends Controller
 {
     public function store (Request $request) {
-    //     $validator = Validator::make($request->all(),[ 
-    //         'file' => 'required',
-    //   ]);   
-
-    //   if($validator->fails()) {          
-           
-    //       return response()->json(['error'=>$validator->errors()], 401);                        
-    //    }
-
-    // dd($request);
+      request()->validate([
+        'file' => 'required|image|mimes:jpg,png',
+      ]);
     
       if ($request->hasFile('file')) {
-        // $name = $request->file->getClientOriginalName();
-        
-        $path = $request->file->store('images', 'public');
+        // $name = $request->file->getClientOriginalName();        
+        // $path = $request->file->store('images', 'public');
 
-        //   $path = $file->store('public/images');
-        //   $name = $file->getClientOriginalName();
-        //   if($file)
-            
-        echo "<pre>";
-        print_r($request->file());
-        //   print_r($name);
+        /* A storage/app/public könyvtárban létrehoz
+        egy images könyvtárat, abba menti a fájlokat */
+
+        
           //store your file into directory and db
-        //   $save = new Image();
-        //   $save->name = $file;
-        //   $save->path= $path;
-        //   $save->save();
-             
-        //   return response()->json([
-        //       "success" => true,
-        //       "message" => "File successfully uploaded",
-        //       "file" => $file
-        //   ]);
- 
+          // $save = new Image();
+          // $save->name = $file;
+          // $save->path= $path;
+          // $save->save();
+
+
+        return response()->json([
+          "success" => true,
+          "path" => $path,
+          "name" => $name,
+          "message" => "File successfully uploaded"
+        ]);
       }
     }
 }
