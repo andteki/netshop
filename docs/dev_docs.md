@@ -3,9 +3,15 @@
 ## Adatbázis
 
 products(id, name, price, unit, images)
-images(id, name, productId)
+images(id, name, path, productId)
 
-## Végpontok
+## Elérhető végpont
+
+| Végpontok | Metódus | Leírás |
+|-----------|---------|------------------------------|
+| imageup   | post    | Kép feltöltése               |
+
+## Tervezett végpontok
 
 | Végpontok | Metódus | Leírás |
 |-----------|---------|------------------------------|
