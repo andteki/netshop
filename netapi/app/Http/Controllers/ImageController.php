@@ -23,10 +23,10 @@ class ImageController extends Controller
         egy images könyvtárat, abba menti a fájlokat */
         
         //Eredeti és új név mentése adatbázisba
-        $save = new Image();
-        $save->name = $name;
-        $save->path= $path;
-        $save->save();
+        $image = new Image();
+        $image->name = $name;
+        $image->path = $path;
+        $image->save();
 
         return response()->json([
           "success" => true,
