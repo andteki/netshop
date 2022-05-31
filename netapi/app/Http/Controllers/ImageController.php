@@ -14,19 +14,19 @@ class ImageController extends Controller
       ]);
     
       if ($request->hasFile('file')) {
-        // $name = $request->file->getClientOriginalName();        
-        // $path = $request->file->store('images', 'public');
+        //Eredeti név lekérdezése
+        $name = $request->file->getClientOriginalName();        
+        //Feltöltés
+        $path = $request->file->store('images', 'public');
 
         /* A storage/app/public könyvtárban létrehoz
         egy images könyvtárat, abba menti a fájlokat */
-
         
-          //store your file into directory and db
-          // $save = new Image();
-          // $save->name = $file;
-          // $save->path= $path;
-          // $save->save();
-
+        //Eredeti és új név mentése adatbázisba
+        $save = new Image();
+        $save->name = $name;
+        $save->path= $path;
+        $save->save();
 
         return response()->json([
           "success" => true,
